@@ -2791,3 +2791,30 @@ nav[class*="guilds_"] {
 [class*="membersWrap"] canvas {
 	display: none !important;
 }
+
+/* --- Restliche Rahmen --- */
+
+[class*="chatContent"],
+[class*="panels_"] {
+	box-shadow: var(--w95-eingelassen) !important;
+	box-sizing: border-box !important;
+}
+
+/* --- Schriftfamilie durchsetzen ---
+   Das Theme bringt weiter oben Tahoma mit. Tahoma kam erst mit
+   Windows 98/2000; Windows 95 setzte MS Sans Serif. Diese Regel
+   steht am Ende und gewinnt damit gegen die frueheren. */
+
+body, button, input, textarea, select,
+[class*="app_"], [class*="chat_"], [class*="message"],
+[class*="sidebar"], [class*="member"], [class*="title_"],
+[class*="text-"] {
+	font-family: "MS Sans Serif", "Microsoft Sans Serif", Tahoma,
+	             Verdana, Arial, sans-serif !important;
+}
+
+/* Code und feste Breite bleiben ausgenommen */
+code, pre, [class*="hljs"], [class*="inlineCode"] {
+	font-family: "MorePerfectDOSVGA", "Px437 IBM VGA8", Consolas,
+	             "Courier New", monospace !important;
+}
