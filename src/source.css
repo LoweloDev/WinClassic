@@ -2681,3 +2681,64 @@ h1, h2, h3 {
 	box-shadow: 0 1px 0 #fff !important;
 	margin: 4px 0 !important;
 }
+
+/*
+////////////////////////////////////////////////////////////
+///KONTRAST UND RESTFLAECHEN
+///
+/// Win95 hatte keine Verlaeufe hinter Namen und keine
+/// halbtransparenten Icons. Beides frisst auf grauem Grund
+/// die Lesbarkeit.
+////////////////////////////////////////////////////////////
+*/
+
+/* Suchfeld in der Kopfleiste: eingelassenes weisses Feld */
+[class*="searchBar"],
+[class*="search_"] [class*="input"],
+[class*="toolbar_"] [class*="search"] {
+	background-color: #fff !important;
+	box-shadow: var(--w95-eingelassen) !important;
+	color: #000 !important;
+}
+
+[class*="searchBar"] input,
+[class*="searchBar"] [class*="placeholder"] {
+	color: #000 !important;
+}
+
+/* Icons in Kopfleiste und Eingabezeile voll deckend */
+[class*="toolbar_"] svg,
+[class*="channelTextArea"] svg,
+[class*="panels_"] svg {
+	opacity: 1 !important;
+	color: #000 !important;
+}
+
+/* Restflaeche unter der Mitgliederliste mitfaerben */
+[class*="membersWrap"],
+[class*="membersWrap"] > div,
+[class*="members_"] > div,
+[class*="content_"] > [class*="container_"]:last-child {
+	background-color: #C0C0C0 !important;
+}
+
+/* Profil-Effekte und Verlaeufe hinter Namen abschalten --
+   die gab es 1995 nicht und sie machen Namen unlesbar. */
+[class*="profileEffect"],
+[class*="banner_"] [class*="gradient"],
+[class*="memberInner"] [class*="effect"],
+[class*="userProfileOuter"] [class*="gradient"] {
+	background-image: none !important;
+	display: none !important;
+}
+
+/* Discord legt Profil-Verlaeufe als inline-style an -- die lassen
+   sich nur mit !important abraeumen. Auf grauem Grund machen sie
+   Namen unlesbar, und 1995 gab es sie ohnehin nicht. */
+[class*="membersWrap"] [style*="gradient"],
+[class*="member_"] [style*="gradient"],
+[class*="memberInner"] [style*="gradient"] {
+	background: none !important;
+	background-image: none !important;
+	mask-image: none !important;
+}
