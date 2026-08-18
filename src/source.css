@@ -2218,22 +2218,12 @@ nav[class*="guilds_"] {
 	background-color: #0a246a !important;
 }
 
-/* ---------- Scrollleisten im Win95-Stil ---------- */
+/* Scrollleisten: Das Theme bringt weiter oben bereits einen
+   vollstaendigen 98.css-Block mit (Pfeilgrafiken, Karomuster,
+   Rahmen). Er benutzt "body *::-webkit-scrollbar-*" und ist damit
+   spezifischer als jede Regel ohne Praefix -- eigene Regeln hier
+   waeren wirkungslos und nur Ballast. */
 
-::-webkit-scrollbar {
-	width: 16px;
-	height: 16px;
-}
-
-::-webkit-scrollbar-track {
-	background-color: #dfdfdf !important;
-	background-image: linear-gradient(45deg,
-		#fff 25%, transparent 25%, transparent 75%, #fff 75%),
-		linear-gradient(45deg,
-		#fff 25%, transparent 25%, transparent 75%, #fff 75%);
-	background-size: 2px 2px;
-	background-position: 0 0, 1px 1px;
-}
 
 ::-webkit-scrollbar-thumb {
 	background-color: var(--w95-grau) !important;
@@ -3356,7 +3346,8 @@ nav[class*="guilds_"] [class*="listItem_"] {
    Zentrierung ueber den Elternteil greift daran vorbei.
    (57 - 39) / 2 = 9px Versatz. */
 nav[class*="guilds_"] [class*="listItem_"] > [class*="wrapper_"] {
-	left: 9px !important;
+	/* (57-39)/2 = 9px, abzueglich 1px Versatz des Eintrags selbst */
+	left: 8px !important;
 }
 
 /* Die Mitgliederliste blieb auf Inhaltshoehe stehen (346px) statt
@@ -3371,4 +3362,267 @@ nav[class*="guilds_"] [class*="listItem_"] > [class*="wrapper_"] {
 [class*="membersWrap"] [class*="members_"] {
 	min-height: 100% !important;
 	flex: 1 1 auto !important;
+}
+
+/*
+////////////////////////////////////////////////////////////
+///KONTEXTMENUES, POPOUTS UND UEBERLAGERUNGEN
+///
+/// Diese Bereiche zeigt der Referenz-Screenshot nicht -- das
+/// Theme hat sie nie angefasst. Discord gibt ihnen weiche
+/// Schlagschatten und 32px hohe Zeilen; Windows 95 kannte
+/// beides nicht: harter Rahmen, 18px Zeilen, blaue Auswahl.
+////////////////////////////////////////////////////////////
+*/
+
+[class*="menu_"],
+[role="menu"],
+[class*="popout"],
+[class*="layerContainer"] > [class*="layer"] {
+	background-color: #C0C0C0 !important;
+	box-shadow: var(--w95-erhaben) !important;
+	border-radius: 0 !important;
+	padding: 2px !important;
+}
+
+[class*="menu_"] [role="menuitem"],
+[class*="menu_"] [class*="item_"],
+[role="menu"] [role="menuitem"] {
+	height: 18px !important;
+	min-height: 18px !important;
+	padding: 0 16px 0 20px !important;
+	margin: 0 !important;
+	font-size: 11px !important;
+	line-height: 18px !important;
+	border-radius: 0 !important;
+	color: #000 !important;
+	box-sizing: border-box !important;
+}
+
+/* Auswahl: blau hinterlegt mit weisser Schrift */
+[class*="menu_"] [role="menuitem"]:hover,
+[class*="menu_"] [role="menuitem"][class*="focused"],
+[role="menu"] [role="menuitem"]:hover {
+	background-color: #0a246a !important;
+	color: #fff !important;
+}
+
+[class*="menu_"] [role="menuitem"]:hover *,
+[class*="menu_"] [role="menuitem"][class*="focused"] * {
+	color: #fff !important;
+}
+
+/* Trenner im Menue: eingelassene Rille statt Linie */
+[class*="menu_"] [class*="separator"],
+[class*="menu_"] hr,
+[role="menu"] [class*="separator"] {
+	height: 2px !important;
+	margin: 2px 1px !important;
+	background: none !important;
+	border: none !important;
+	border-top: 1px solid #808080 !important;
+	border-bottom: 1px solid #fff !important;
+}
+
+/* Symbole im Menue kleiner, damit sie in 18px passen */
+[class*="menu_"] [role="menuitem"] svg,
+[role="menu"] [role="menuitem"] svg {
+	width: 14px !important;
+	height: 14px !important;
+}
+
+/* Tooltips: gelber Kasten mit schwarzem Rand, wie Win95 */
+[class*="tooltip_"],
+[role="tooltip"] {
+	background-color: #ffffe1 !important;
+	color: #000 !important;
+	border: 1px solid #000 !important;
+	border-radius: 0 !important;
+	box-shadow: none !important;
+	font-size: 11px !important;
+	padding: 1px 4px !important;
+}
+
+[class*="tooltipPointer"] {
+	display: none !important;
+}
+
+/* Menuezeilen sind in Win95 flach -- kein Rahmen, keine Kante.
+   Erhaben ist nur das Menue selbst. */
+[class*="menu_"] [role="menuitem"],
+[class*="menu_"] [role="menuitem"] *,
+[role="menu"] [role="menuitem"],
+[role="menu"] [role="menuitem"] * {
+	box-shadow: none !important;
+	border: none !important;
+	background-image: none !important;
+}
+
+/* Das Menue soll sich nach seinem Inhalt richten und keine
+   Scrollleiste zeigen, solange es passt. */
+[class*="menu_"] [class*="scroller"],
+[role="menu"] [class*="scroller"] {
+	overflow-y: auto !important;
+	max-height: none !important;
+}
+
+[class*="menu_"] [class*="scroller"]::-webkit-scrollbar,
+[role="menu"] [class*="scroller"]::-webkit-scrollbar {
+	width: 16px;
+}
+
+/*
+////////////////////////////////////////////////////////////
+///SCHALTER ALS WIN95-KONTROLLKAESTCHEN
+///
+/// Discord benutzt Schiebeschalter. Windows 95 kannte
+/// Kontrollkaestchen: 13x13, weisses Feld mit eingelassenem
+/// Rand, schwarzes Haekchen wenn gesetzt.
+////////////////////////////////////////////////////////////
+*/
+
+[class*="switch_"],
+[role="switch"],
+[class*="switchEnabled"],
+[class*="switchDisabled"] {
+	width: 13px !important;
+	height: 13px !important;
+	min-width: 13px !important;
+	background-color: #fff !important;
+	box-shadow: var(--w95-eingelassen) !important;
+	border-radius: 0 !important;
+	border: none !important;
+	position: relative !important;
+	flex: 0 0 13px !important;
+}
+
+/* Der Schieber-Knopf entfaellt -- ein Kaestchen hat keinen */
+[class*="switch_"] [class*="slider"],
+[role="switch"] [class*="slider"],
+[class*="switch_"] > svg,
+[role="switch"] > svg {
+	display: none !important;
+}
+
+/* Haekchen, wenn gesetzt */
+[class*="switchEnabled"]::after,
+[role="switch"][aria-checked="true"]::after,
+[class*="switch_"][class*="checked"]::after {
+	content: "";
+	position: absolute;
+	left: 3px;
+	top: 1px;
+	width: 4px;
+	height: 7px;
+	border: solid #000;
+	border-width: 0 2px 2px 0;
+	transform: rotate(40deg);
+}
+
+/* Kontrollkaestchen, die Discord schon als solche baut */
+input[type="checkbox"],
+[class*="checkboxInner"],
+[class*="checkbox_"]:not([class*="item_"]) {
+	width: 13px !important;
+	height: 13px !important;
+	background-color: #fff !important;
+	box-shadow: var(--w95-eingelassen) !important;
+	border-radius: 0 !important;
+	border: none !important;
+	appearance: none !important;
+}
+
+/* Optionsfelder blieben in Win95 rund */
+[class*="radio"] [class*="dot"],
+input[type="radio"] {
+	border-radius: 50% !important;
+	background-color: #fff !important;
+	box-shadow: var(--w95-eingelassen) !important;
+	width: 12px !important;
+	height: 12px !important;
+}
+
+/*
+////////////////////////////////////////////////////////////
+///VENCORD-EIGENE OBERFLAECHEN
+///
+/// Vencord bringt eigene Seiten mit (Plugins, Themes, Updater,
+/// Cloud). Sie benutzen eigene Klassen mit dem Praefix "vc-" und
+/// eigene Farbvariablen -- weder Discord noch dieses Theme haben
+/// sie je erfasst. Ohne diesen Block bleiben sie dunkel, mit
+/// schwarzer Schrift darauf.
+///
+/// Die Praefixe sind sprechend und ohne Hash, also stabil.
+////////////////////////////////////////////////////////////
+*/
+
+[class*="vc-settings-tab"],
+[class*="vc-plugins-grid"],
+[class*="vc-settings"] {
+	background-color: #C0C0C0 !important;
+	color: #000 !important;
+}
+
+/* Karten: Win95-Gruppenkasten mit erhabener Kante */
+[class*="vc-card-base"],
+[class*="vc-addon-card"],
+[class*="vc-plugin-card"],
+[class*="vc-card"] {
+	background-color: #C0C0C0 !important;
+	box-shadow: var(--w95-erhaben) !important;
+	border-radius: 0 !important;
+	border: none !important;
+	padding: 6px 8px !important;
+	margin: 3px !important;
+	color: #000 !important;
+}
+
+[class*="vc-addon-header"],
+[class*="vc-addon-name-author"],
+[class*="vc-addon-title-container"],
+[class*="vc-text-base"],
+[class*="vc-h4"],
+[class*="vc-h5"] {
+	color: #000 !important;
+	background-color: transparent !important;
+}
+
+[class*="vc-h4"],
+[class*="vc-h5"] {
+	font-size: 12px !important;
+	font-weight: 700 !important;
+}
+
+[class*="vc-text-base"],
+[class*="vc-addon-description"] {
+	font-size: 11px !important;
+	line-height: 14px !important;
+}
+
+/* Eingabefelder und Auswahllisten in den Vencord-Seiten */
+[class*="vc-"] input[type="text"],
+[class*="vc-"] input[type="search"],
+[class*="vc-"] select,
+[class*="vc-"] textarea {
+	background-color: #fff !important;
+	color: #000 !important;
+	box-shadow: var(--w95-eingelassen) !important;
+	border: none !important;
+	border-radius: 0 !important;
+	font-size: 11px !important;
+}
+
+/* Knoepfe der Vencord-Seiten */
+[class*="vc-"] button:not([role="switch"]) {
+	background-color: #C0C0C0 !important;
+	color: #000 !important;
+	box-shadow: var(--w95-erhaben) !important;
+	border-radius: 0 !important;
+	border: none !important;
+	font-size: 11px !important;
+	padding: 2px 8px !important;
+}
+
+[class*="vc-"] button:not([role="switch"]):active {
+	box-shadow: var(--w95-eingelassen) !important;
 }
