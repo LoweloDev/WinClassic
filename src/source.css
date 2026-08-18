@@ -170,6 +170,7 @@
  }
 
  .platform-win #app-mount,
+ .platform-web #app-mount,
  .platform-win .backdrop__1a911,
  .platform-win .backdropWithLayer-3_uhz4 {
  	padding: var(--classic-app-padding);
@@ -200,7 +201,7 @@
  	text-transform: none !important;
  }
 
- .theme-light {
+ :is(.theme-light, .theme-dark) {
  	--header-primary: #000;
  	--header-secondary: #000;
  	--text-normal: #000;
@@ -290,7 +291,7 @@
  }
 
  .theme-dark .contextMenu-HLZMGh:not(.da-contextMenu),
- .theme-light .contextMenu-HLZMGh:not(.da-contextMenu) {
+ :is(.theme-light, .theme-dark) .contextMenu-HLZMGh:not(.da-contextMenu) {
  	left: 0 !important;
  	top: 0px !important;
  	max-height: 200px;
@@ -362,7 +363,7 @@ its up to you to fix them or wait for me to eventually fox them*/
  }
 
 
- .theme-light .scrollerThemed-2oenus.themedWithTrack-q8E3vB .scroller-2FKFPG::-webkit-scrollbar-thumb {
+ :is(.theme-light, .theme-dark) .scrollerThemed-2oenus.themedWithTrack-q8E3vB .scroller-2FKFPG::-webkit-scrollbar-thumb {
  	background-color: #d7d2cf !important;
  	border-bottom: 1px solid #848484;
  	border-right: 1px solid #848484;
@@ -371,16 +372,16 @@ its up to you to fix them or wait for me to eventually fox them*/
  	width: 16px;
  }
 
- .theme-light .scrollerWrap-2lJEkd .scroller-2FKFPG::-webkit-scrollbar-track {
+ :is(.theme-light, .theme-dark) .scrollerWrap-2lJEkd .scroller-2FKFPG::-webkit-scrollbar-track {
  	border: 6px !important;
  	border-radius: 0px !important;
  }
 
- .theme-light .scrollerWrap-2lJEkd .scroller-2FKFPG::-webkit-scrollbar-track:hover {
+ :is(.theme-light, .theme-dark) .scrollerWrap-2lJEkd .scroller-2FKFPG::-webkit-scrollbar-track:hover {
  	background-color: #111111 !important;
  }
 
- .theme-light .scrollerWrap-2lJEkd .scroller-2FKFPG::-webkit-scrollbar-track:active {
+ :is(.theme-light, .theme-dark) .scrollerWrap-2lJEkd .scroller-2FKFPG::-webkit-scrollbar-track:active {
  	background-color: #2a2a2a !important;
  }
 
@@ -426,8 +427,8 @@ its up to you to fix them or wait for me to eventually fox them*/
  	color: #000;
  }
 
- .theme-light #bd-settings-sidebar .ui-tab-bar-header,
- .theme-light #bd-settings-sidebar .ui-tab-bar-item {
+ :is(.theme-light, .theme-dark) #bd-settings-sidebar .ui-tab-bar-header,
+ :is(.theme-light, .theme-dark) #bd-settings-sidebar .ui-tab-bar-item {
  	color: #000;
  }
 
@@ -459,9 +460,9 @@ its up to you to fix them or wait for me to eventually fox them*/
  	color: #fff;
  }
 
- .theme-light .bda-slist li,
- .theme-light .bda-slist .bda-description,
- .theme-light .bda-slist .bda-header {
+ :is(.theme-light, .theme-dark) .bda-slist li,
+ :is(.theme-light, .theme-dark) .bda-slist .bda-description,
+ :is(.theme-light, .theme-dark) .bda-slist .bda-header {
  	background-color: var(--background-secondary);
  	color: #000;
  	margin: 0;
@@ -513,7 +514,7 @@ its up to you to fix them or wait for me to eventually fox them*/
  	background-color: #C0C0C0 !important;
  }
 
- .theme-light input {
+ :is(.theme-light, .theme-dark) input {
  	background: #fff;
  	background-color: #fff;
  }
@@ -529,17 +530,17 @@ its up to you to fix them or wait for me to eventually fox them*/
  }
 
  .buttons-205you,
- .theme-light .attachButton-1UjEWA {
+ :is(.theme-light, .theme-dark) .attachButton-1UjEWA {
  	height: auto;
  	min-height: 25px;
  }
 
  .button-2vd_v_,
- .theme-light .attachButton-1UjEWA {
+ :is(.theme-light, .theme-dark) .attachButton-1UjEWA {
  	padding: 0;
  }
 
- .theme-light .attachButton-1UjEWA:hover {
+ :is(.theme-light, .theme-dark) .attachButton-1UjEWA:hover {
  	background: #0a246a;
  }
 
@@ -576,7 +577,7 @@ its up to you to fix them or wait for me to eventually fox them*/
 
  .inner-zqa7da,
  .search__49676,
- .theme-light input, .searchBar__35e86 .searchBarComponent__35e86 {
+ :is(.theme-light, .theme-dark) input, .searchBar__35e86 .searchBarComponent__35e86 {
  	border-bottom: 1px solid #fff;
  	border-right: 1px solid #fff;
  	border-top: 1px solid #404040;
@@ -665,7 +666,7 @@ its up to you to fix them or wait for me to eventually fox them*/
  	border-radius: 1px;
  }
 
- .theme-light .form_f75fb0:before {
+ :is(.theme-light, .theme-dark) .form_f75fb0:before {
  	border-right: 1px solid #3f3c5d;
  	border-top: 1px solid #000;
  	border-left: 1px solid #dccec6;
@@ -690,7 +691,7 @@ its up to you to fix them or wait for me to eventually fox them*/
  }
 
  /* Channel Info */
- .theme-light .children__9293f:after {
+ :is(.theme-light, .theme-dark) .children__9293f:after {
  	background: transparent;
  }
 
@@ -1006,7 +1007,7 @@ its up to you to fix them or wait for me to eventually fox them*/
  	border-left: 1px solid #fff;
  }
 
- .theme-light .checkbox-f1HnKB {
+ :is(.theme-light, .theme-dark) .checkbox-f1HnKB {
  	display: none;
  }
 
@@ -1037,11 +1038,11 @@ its up to you to fix them or wait for me to eventually fox them*/
  }
 
  /* Uploading Files */
- .theme-light .checkbox-f1HnKB {
+ :is(.theme-light, .theme-dark) .checkbox-f1HnKB {
  	display: none;
  }
 
- .theme-light .uploadModal_dbca3c {
+ :is(.theme-light, .theme-dark) .uploadModal_dbca3c {
  	color: #000;
  	background: #C0C0C0;
  	background-color: #C0C0C0;
@@ -1077,7 +1078,7 @@ its up to you to fix them or wait for me to eventually fox them*/
  	background-color: #848484;
  }
 
- .theme-light .closeButton_c2b141 {
+ :is(.theme-light, .theme-dark) .closeButton_c2b141 {
  	color: #000;
  	background: #C0C0C0;
  	background-color: #C0C0C0;
@@ -1210,7 +1211,7 @@ its up to you to fix them or wait for me to eventually fox them*/
  	height: 30px !important;
  }
 
- .theme-light .header-JHwfVI, .theme-light .header_fed6d3 {
+ :is(.theme-light, .theme-dark) .header-JHwfVI, :is(.theme-light, .theme-dark) .header_fed6d3 {
  	color: #000;
  	background: #C0C0C0;
  	background-color: #C0C0C0;
@@ -1230,7 +1231,7 @@ its up to you to fix them or wait for me to eventually fox them*/
  	border-left: 1px solid #fff;
  }
 
- .list-obNEuP, .inner__999f6, .theme-light .header-JHwfVI {
+ .list-obNEuP, .inner__999f6, :is(.theme-light, .theme-dark) .header-JHwfVI {
  	color: #000;
  	background: #C0C0C0;
  	background-color: #C0C0C0;
@@ -1396,7 +1397,7 @@ its up to you to fix them or wait for me to eventually fox them*/
 
 
  /* Pop Outs */
- .focusLock__49fc1, .root__49fc1, .bd-addon-error-header, .bd-tab-item.selected, .theme-light .footerSeparator__49fc1 {
+ .focusLock__49fc1, .root__49fc1, .bd-addon-error-header, .bd-tab-item.selected, :is(.theme-light, .theme-dark) .footerSeparator__49fc1 {
  	color: #000;
  	background: #C0C0C0;
  	background-color: #C0C0C0;
@@ -1449,7 +1450,7 @@ its up to you to fix them or wait for me to eventually fox them*/
  }
 
  .theme-dark .imageLoading__1859b,
- .theme-light .imageLoading__1859b {
+ :is(.theme-light, .theme-dark) .imageLoading__1859b {
  	background-image: none;
  }
 
@@ -2073,3 +2074,173 @@ its up to you to fix them or wait for me to eventually fox them*/
  .timestamp-modal-custom-input {
  	border-radius: 0 !important;
  }
+
+
+/*
+////////////////////////////////////////////////////////////
+///DISCORD "VISUAL REFRESH" (2025/2026)
+///
+/// Warum es diesen Block braucht:
+///
+/// 1. Discord baut Klassennamen mit CSS-Modules. Der Name
+///    besteht aus einem sprechenden Praefix und einem Hash,
+///    der sich mit JEDEM Build aendert:
+///        .sidebarList-2wPFdM   (2021)
+///        .sidebarList__12345   (heute)
+///    Regeln mit vollem Hash sterben beim naechsten Build.
+///    [class*="sidebarList"] ueberlebt ihn. Von den 479
+///    Selektoren dieses Themes trafen zuletzt noch 36.
+///
+/// 2. Die Farbvariablen wurden umbenannt. Die alten Namen
+///    existieren nicht mehr -- Discord liefert sie leer aus:
+///        --text-normal        -> --text-default
+///        --header-primary     -> --text-strong
+///        --interactive-normal -> --interactive-text-default
+///        --background-primary -> --background-base-lower
+///
+/// 3. Dieser Block fasst bewusst KEIN Layout an -- keine
+///    Positionen, Groessen oder Anordnungen. Nur Farbe,
+///    Rahmen, Schrift. Layout-Regeln brechen, sobald Discord
+///    den Aufbau aendert, und verschieben dann die halbe
+///    Oberflaeche. Der Win95-Look braucht sie nicht.
+////////////////////////////////////////////////////////////
+*/
+
+/* ---------- Farbvariablen unter ihren heutigen Namen ---------- */
+
+:is(.theme-light, .theme-dark),
+:root {
+	--text-default: #000;
+	--text-strong: #000;
+	--text-primary: #000;
+	--text-secondary: #000;
+	--text-muted: #3f3f3f;
+	--text-subtle: #3f3f3f;
+	--text-link: #00e;
+	--text-invert: #fff;
+	--channels-default: #000;
+
+	--interactive-text-default: #000;
+	--interactive-text-hover: #fff;
+	--interactive-text-active: #fff;
+	--interactive-icon-default: #000;
+	--interactive-icon-hover: #000;
+	--interactive-icon-active: #000;
+
+	--background-base-lowest: #C0C0C0;
+	--background-base-lower: #fff;
+	--background-base-low: #C0C0C0;
+	--background-surface-high: #C0C0C0;
+	--background-surface-higher: #C0C0C0;
+	--background-surface-highest: #fff;
+	--background-secondary-alt: #C0C0C0;
+	--background-accent: #0a246a;
+
+	--interactive-background-hover: #0a246a;
+	--interactive-background-active: #0a246a;
+	--interactive-background-selected: #0a246a;
+	--interactive-accent-background-default: #0a246a;
+	--interactive-accent-background-hover: #0a246a;
+	--interactive-accent-background-active: #0a246a;
+	--interactive-accent-background-selected: #0a246a;
+
+	--background-mod-muted: rgba(0, 0, 0, .04);
+	--background-mod-subtle: rgba(0, 0, 0, .06);
+	--background-mod-normal: rgba(0, 0, 0, .08);
+	--background-mod-strong: rgba(0, 0, 0, .12);
+
+	/* Win95-Kanten, einmal definiert statt zwanzigmal getippt */
+	--w95-erhaben: inset -1px -1px #0a0a0a, inset 1px 1px #fff,
+	               inset -2px -2px #808080, inset 2px 2px #dfdfdf;
+	--w95-eingelassen: inset -1px -1px #fff, inset 1px 1px #808080,
+	                   inset -2px -2px #dfdfdf, inset 2px 2px #0a0a0a;
+	--w95-grau: #C0C0C0;
+}
+
+/* ---------- Schrift ---------- */
+/* Nicht mitgeliefert (Microsoft-Lizenz), nur referenziert.
+   Unter Linux z.B. aus den Chicago95-Extras oder wine-Fonts. */
+
+body,
+button,
+input,
+textarea,
+[class*="app_"],
+[class*="chat_"] {
+	font-family: "MS Sans Serif", "Microsoft Sans Serif", Tahoma,
+	             Verdana, Arial, sans-serif !important;
+}
+
+/* ---------- Eingabefeld: weiss, eingelassener Rahmen ---------- */
+
+[class*="channelTextArea"],
+[class*="channelTextArea"] [class*="scrollableContainer"],
+[class*="channelTextArea"] [class*="inner_"] {
+	background-color: #fff !important;
+	box-shadow: var(--w95-eingelassen) !important;
+}
+
+/* ---------- Knoepfe: grau mit erhabener Kante ---------- */
+
+button[class*="lookFilled"],
+button[class*="lookBlank"] [class*="contents"],
+[class*="buttonContainer"] > button,
+[class*="channelTextArea"] button {
+	background-color: var(--w95-grau) !important;
+	box-shadow: var(--w95-erhaben) !important;
+	color: #000 !important;
+}
+
+button[class*="lookFilled"]:active,
+[class*="channelTextArea"] button:active {
+	box-shadow: var(--w95-eingelassen) !important;
+}
+
+/* ---------- Leisten und Listen ---------- */
+
+[class*="peopleColumn"],
+[class*="membersWrap"],
+[class*="panels_"],
+[class*="title_"],
+[class*="upperContainer"] {
+	background-color: var(--w95-grau) !important;
+}
+
+[class*="sidebarList"],
+[class*="tabBody"],
+[class*="chatContent"],
+[class*="messagesWrapper"] {
+	background-color: #fff !important;
+}
+
+/* Serverleiste: dunkelblau wie die Win95-Arbeitsflaeche */
+nav[class*="guilds_"] {
+	background-color: #0a246a !important;
+}
+
+/* ---------- Scrollleisten im Win95-Stil ---------- */
+
+::-webkit-scrollbar {
+	width: 16px;
+	height: 16px;
+}
+
+::-webkit-scrollbar-track {
+	background-color: #dfdfdf !important;
+	background-image: linear-gradient(45deg,
+		#fff 25%, transparent 25%, transparent 75%, #fff 75%),
+		linear-gradient(45deg,
+		#fff 25%, transparent 25%, transparent 75%, #fff 75%);
+	background-size: 2px 2px;
+	background-position: 0 0, 1px 1px;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: var(--w95-grau) !important;
+	box-shadow: var(--w95-erhaben) !important;
+	border: none !important;
+}
+
+::-webkit-scrollbar-corner {
+	background-color: var(--w95-grau) !important;
+}
