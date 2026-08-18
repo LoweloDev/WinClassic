@@ -2323,14 +2323,16 @@ nav[class*="guilds_"] {
 	padding: 0 !important;
 }
 
-/* Server-Icons: im Original 32px in der 57px-Leiste, nicht 44px */
+/* Server-Icons: im Original 39px hoch mit 7px Abstand.
+   (Eine fruehere Messung von 28px hatte den Bildinhalt erfasst,
+   nicht den Kasten.) */
 nav[class*="guilds_"] [class*="listItem_"],
 nav[class*="guilds_"] [class*="wrapper_"],
 nav[class*="guilds_"] [class*="wrapper_"] img,
 nav[class*="guilds_"] [class*="wrapper_"] svg,
 nav[class*="guilds_"] foreignObject {
-	width: 32px !important;
-	height: 32px !important;
+	width: 39px !important;
+	height: 39px !important;
 }
 
 /*
@@ -2410,7 +2412,7 @@ nav[class*="guilds_"] [class*="stack_"]::-webkit-scrollbar {
 
 /* Icons mittig mit etwas Luft, wie im Original */
 nav[class*="guilds_"] [class*="listItem_"] {
-	margin: 2px auto !important;
+	margin: 3px auto !important;
 }
 
 /* Nachrichten dichter setzen -- 1995 gab es keine Luftpolster */
@@ -2485,16 +2487,13 @@ h1, h2, h3 {
 
 /* --- Nachrichten: Win95 kannte keine 72px-Einzuege --- */
 
+/* Der Einzug muss bei 72px bleiben: Discord positioniert den
+   Avatar absolut und der Textcontainer rechnet mit diesem Wert.
+   Ein kleinerer Einzug laesst den Text 72px aus seinem Container
+   ragen -- bei jeder einzelnen Nachricht. */
 [class*="message_"][class*="cozyMessage"] {
-	padding-left: 56px !important;
 	padding-right: 12px !important;
 	margin-top: 2px !important;
-}
-
-[class*="cozyMessage"] [class*="avatar_"] {
-	left: 12px !important;
-	width: 32px !important;
-	height: 32px !important;
 }
 
 /* Der Name braucht Vorrang vor den Knoepfen, sonst bleiben ihm
@@ -3225,4 +3224,118 @@ code, pre, [class*="hljs"], [class*="inlineCode"] {
 [class*="panels_"] button[aria-label*="ptionen"],
 [class*="panels_"] button[aria-label*="ptions"] {
 	width: 12px !important;
+}
+
+/* Die Serverleiste liegt innerhalb von sidebar_ und wurde von der
+   Regel fuer die Kanalliste grau mitgefaerbt. Hier wieder auf
+   Navy setzen -- samt ihrer Scroll-Container. */
+nav[class*="guilds_"],
+nav[class*="guilds_"] [class*="scroller"],
+nav[class*="guilds_"] [class*="stack_"],
+nav[class*="guilds_"] [class*="content_"],
+nav[class*="guilds_"] > div {
+	background-color: #0a246a !important;
+}
+
+/* Icons als helle Kaesten auf dem dunklen Grund, wie im Original */
+nav[class*="guilds_"] [class*="listItem_"] [class*="wrapper_"] {
+	box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #fff !important;
+}
+
+
+/*
+////////////////////////////////////////////////////////////
+///SYMBOLKNOEPFE
+///
+/// Discord verteilt heute ein Dutzend Knopfgroessen. Eine feste
+/// Groesse fuer ALLE Knoepfe quetscht aber jene zusammen, deren
+/// Inhalt mehr braucht -- der Inhalt ragt dann heraus.
+///
+/// :has(> svg:only-child) trifft nur reine Symbolknoepfe. Alles
+/// mit Text oder mehreren Kindern behaelt seine Groesse und
+/// bekommt nur die Win95-Kante.
+////////////////////////////////////////////////////////////
+*/
+
+[class*="toolbar_"] button:has(> svg:only-child),
+[class*="channelTextArea"] button:has(> svg:only-child),
+[class*="title_"] button:has(> svg:only-child) {
+	width: 22px !important;
+	height: 22px !important;
+	min-width: 0 !important;
+	min-height: 0 !important;
+	padding: 0 !important;
+	box-sizing: border-box !important;
+}
+
+/* Win95-Kante fuer alle Knoepfe, ohne ihre Groesse anzutasten */
+[class*="toolbar_"] button,
+[class*="channelTextArea"] button,
+[class*="title_"] button {
+	background-color: #C0C0C0 !important;
+	box-shadow: var(--w95-erhaben) !important;
+	border-radius: 0 !important;
+}
+
+[class*="toolbar_"] button:active,
+[class*="channelTextArea"] button:active,
+[class*="title_"] button:active {
+	box-shadow: var(--w95-eingelassen) !important;
+}
+
+/* Server-Icons sind keine Knoepfe im Win95-Sinn */
+nav[class*="guilds_"] button,
+nav[class*="guilds_"] [role="button"] {
+	background-color: transparent !important;
+	box-shadow: none !important;
+}
+
+/*
+////////////////////////////////////////////////////////////
+///KORREKTUREN AUS DEM UEBERLAUF-VERGLEICH
+///
+/// Messung mit und ohne Theme an derselben Ansicht:
+///   ohne Theme  53 Ueberlaeufe (Discords Normalzustand)
+///   mit Theme   75
+/// Die 22 zusaetzlichen gehen auf diese Regeln zurueck.
+////////////////////////////////////////////////////////////
+*/
+
+/* 1. Server-Ordner: Die feste Icon-Groesse von 39px sprengt die
+      Ordner-Container, die mehrere Icons stapeln. */
+nav[class*="guilds_"] [class*="folderGroup"],
+nav[class*="guilds_"] [class*="folderHeader"],
+nav[class*="guilds_"] [class*="folder_"] {
+	width: auto !important;
+	height: auto !important;
+	min-height: 0 !important;
+	overflow: hidden !important;
+}
+
+nav[class*="guilds_"] [class*="folderGroup"] [class*="wrapper_"],
+nav[class*="guilds_"] [class*="folder_"] [class*="wrapper_"] {
+	width: 39px !important;
+	height: auto !important;
+}
+
+/* 2. Eingabezeile: die feste Hoehe von 46px schneidet den
+      Scroll-Container ab, sobald mehr Inhalt da ist. */
+[class*="channelTextArea"] {
+	max-height: none !important;
+	min-height: 46px !important;
+}
+
+[class*="channelTextArea"] [class*="scrollableContainer"] {
+	min-height: 0 !important;
+	max-height: none !important;
+}
+
+/* 3. Mitgliederliste: height fixiert den Container, der Inhalt
+      braucht aber mehr. min-height laesst ihn wachsen. */
+[class*="membersWrap"] {
+	height: auto !important;
+}
+
+[class*="membersWrap"] [class*="members_"] {
+	max-height: none !important;
 }
