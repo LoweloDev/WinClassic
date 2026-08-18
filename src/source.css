@@ -2550,15 +2550,17 @@ h1, h2, h3 {
 
 /* Navigationseintraege: kompakt, mit Win95-Rille */
 [class*="navScroller"] [class*="item_"] {
-	/* min-height statt height: mehrzeilige Eintraege muessen
-	   wachsen duerfen, sonst ueberlappt ihr Text den naechsten. */
-	min-height: 22px !important;
-	padding: 2px 8px !important;
+	/* Am Original gemessen: 16px hohe Eintraege, umlaufender
+	   Rahmen, Rille zwischen den Zeilen (dunkelgrau, dann weiss).
+	   min-height statt height, damit mehrzeilige Beschriftungen
+	   wachsen duerfen statt den naechsten Eintrag zu ueberlappen. */
+	min-height: 16px !important;
+	padding: 0 6px !important;
 	margin: 0 !important;
-	font-size: 12px !important;
-	line-height: 18px !important;
-	border-top: 1px solid #fff !important;
-	border-bottom: 1px solid #808080 !important;
+	font-size: 11px !important;
+	line-height: 15px !important;
+	border: 1px solid #808080 !important;
+	border-top-color: #fff !important;
 	box-sizing: border-box !important;
 	color: #000 !important;
 }
@@ -2578,12 +2580,14 @@ h1, h2, h3 {
 	color: #fff !important;
 }
 
-/* Trennueberschriften der Navigation */
+/* Trennueberschriften: im Original zentriert, fett, ohne Rahmen */
 [class*="navScroller"] [class*="header_"] {
 	font-size: 11px !important;
 	font-weight: 700 !important;
 	color: #000 !important;
-	padding: 4px 8px 2px !important;
+	text-align: center !important;
+	padding: 3px 0 1px !important;
+	border: none !important;
 }
 
 /* Inhaltsbereich: Abschnitte als abgesetzte Kaesten */
@@ -2973,4 +2977,103 @@ code, pre, [class*="hljs"], [class*="inlineCode"] {
 [class*="panels_"] [class*="panelSubtext"] {
 	line-height: 11px !important;
 	font-size: 10px !important;
+}
+
+/* Die Navigation der Einstellungen hat im Original keine Icons --
+   die Eintraege sind reine Textzeilen. Discords Icons treiben die
+   Zeilenhoehe auf 21px statt 16px. */
+[class*="navScroller"] [class*="item_"] svg,
+[class*="navScroller"] [class*="item_"] [class*="icon_"] {
+	display: none !important;
+}
+
+[class*="navScroller"] [class*="item_"] {
+	display: flex !important;
+	align-items: center !important;
+}
+
+/* Neben text-* gibt es eine zweite Utility-Skala fuer
+   Ueberschriften: heading-*. Ohne sie bleiben Abschnittstitel
+   auf 13px und fallen aus dem Win95-Raster. */
+
+[class*="heading-xxs/"] { font-size: 10px !important; line-height: 13px !important; }
+[class*="heading-xs/"]  { font-size: 11px !important; line-height: 14px !important; }
+[class*="heading-sm/"]  { font-size: 11px !important; line-height: 14px !important; }
+[class*="heading-md/"]  { font-size: 12px !important; line-height: 15px !important; }
+[class*="heading-lg/"]  { font-size: 12px !important; line-height: 15px !important; }
+[class*="heading-xl/"]  { font-size: 13px !important; line-height: 16px !important; }
+
+/* Abschnittstitel der Einstellungsnavigation: im Original
+   zentriert und fett, ohne Rahmen. */
+[class*="sectionLabel"] {
+	text-align: center !important;
+	font-weight: 700 !important;
+	color: #000 !important;
+	padding: 3px 0 1px !important;
+	border: none !important;
+}
+
+[class*="sectionLabel"] * {
+	text-align: center !important;
+	font-weight: 700 !important;
+	font-size: 11px !important;
+}
+
+/*
+////////////////////////////////////////////////////////////
+///EINSTELLUNGEN: FENSTERFUELLEND UND KAESTEN
+///
+/// Im Original nehmen die Einstellungen das ganze Fenster ein.
+/// Discord zeigt sie heute als schmales Overlay mit Rand.
+////////////////////////////////////////////////////////////
+*/
+
+[class*="layer_"]:has([class*="navScroller"]) {
+	inset: 0 !important;
+	width: 100% !important;
+	height: 100% !important;
+	padding: 0 !important;
+}
+
+[class*="layer_"]:has([class*="navScroller"]) > div,
+[class*="layer_"]:has([class*="navScroller"]) [class*="standardSidebarView"] {
+	width: 100% !important;
+	height: 100% !important;
+	max-width: none !important;
+	border-radius: 0 !important;
+}
+
+/* Abschnittstitel wirklich zentrieren -- der Container ist ein
+   Flex-Element, text-align allein reicht dort nicht. */
+[class*="sectionLabel"] {
+	display: flex !important;
+	justify-content: center !important;
+	align-items: center !important;
+}
+
+/* Abschnitte im Inhaltsbereich als Win95-Gruppenkaesten */
+[class*="layer_"]:has([class*="navScroller"]) [class*="card_"],
+[class*="layer_"]:has([class*="navScroller"]) [class*="container__75920"] {
+	background-color: #C0C0C0 !important;
+	box-shadow: var(--w95-erhaben) !important;
+	padding: 6px 8px !important;
+	margin: 4px 0 !important;
+}
+
+/* Das Einstellungs-Modal sitzt mit 40px Rand im Fenster.
+   Im Original fuellt es das Fenster ganz aus. */
+[class*="outerContainer"] {
+	padding: 0 !important;
+}
+
+[class*="outerContainer"] > [class*="container_"],
+[class*="outerContainer"] [class*="modalContent"] {
+	position: absolute !important;
+	inset: 0 !important;
+	width: 100% !important;
+	height: 100% !important;
+	max-width: none !important;
+	max-height: none !important;
+	margin: 0 !important;
+	border-radius: 0 !important;
 }
