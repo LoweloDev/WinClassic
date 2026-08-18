@@ -2244,3 +2244,282 @@ nav[class*="guilds_"] {
 ::-webkit-scrollbar-corner {
 	background-color: var(--w95-grau) !important;
 }
+
+/*
+////////////////////////////////////////////////////////////
+///MASSE UND FLAECHEN NACH DEM ORIGINAL-SCREENSHOT
+///
+/// Werte pixelgenau aus dem Referenzbild des Themes
+/// ausgemessen, nicht geschaetzt:
+///
+///   Titelleiste      18px hoch   #000080
+///   Serverleiste     57px breit  #0a246a
+///   Kanalliste      192px breit  #c0c0c0
+///   Kanalzeile       26px hoch
+///   Chat                         #ffffff
+///   Mitgliederliste 216px breit  #c0c0c0
+///   Eingabezeile                 #ebedef
+///
+/// Discord liefert heute 72 / 326 / 264px und 35px Zeilen.
+////////////////////////////////////////////////////////////
+*/
+
+/* --- Flaechen: grau ist der Normalfall, weiss nur der Chat --- */
+
+[class*="sidebarList"],
+[class*="sidebar_"] [class*="scroller"],
+[class*="membersWrap"],
+[class*="members_"] {
+	background-color: #C0C0C0 !important;
+}
+
+[class*="chatContent"],
+[class*="messagesWrapper"],
+[class*="scrollerInner"] {
+	background-color: #fff !important;
+}
+
+/* Eingabezeile: das hellere Grau des Originals */
+[class*="channelTextArea"],
+[class*="channelTextArea"] [class*="scrollableContainer"] {
+	background-color: #ebedef !important;
+	box-shadow: var(--w95-eingelassen) !important;
+}
+
+/* --- Masse --- */
+
+nav[class*="guilds_"] {
+	width: 57px !important;
+	min-width: 57px !important;
+}
+
+[class*="sidebarList"] {
+	width: 192px !important;
+	min-width: 192px !important;
+	max-width: 192px !important;
+	flex: 0 0 192px !important;
+}
+
+/* Gesamtcontainer = Serverleiste (57) + Kanalliste (192) */
+[class*="sidebar_"]:not([class*="sidebarList"]) {
+	width: 249px !important;
+	max-width: 249px !important;
+	flex: 0 0 249px !important;
+}
+
+[class*="membersWrap"] {
+	width: 216px !important;
+	min-width: 216px !important;
+	flex: 0 0 216px !important;
+}
+
+/* Kanalzeilen auf Win95-Hoehe */
+[class*="containerDefault"],
+[class*="sidebarList"] [class*="link_"] {
+	height: 26px !important;
+	min-height: 26px !important;
+	padding: 0 !important;
+}
+
+/* Server-Icons an die schmalere Leiste anpassen */
+nav[class*="guilds_"] [class*="listItem_"],
+nav[class*="guilds_"] [class*="wrapper_"] {
+	width: 44px !important;
+	height: 44px !important;
+}
+
+/*
+////////////////////////////////////////////////////////////
+///LISTENTRENNER, AUSWAHL UND AVATARE
+///
+/// Im Original trennt jede Listenzeile eine Win95-Rille:
+/// eine dunkelgraue Linie, direkt darunter eine weisse.
+/// Dadurch wirken die Zeilen eingelassen statt schwebend.
+////////////////////////////////////////////////////////////
+*/
+
+/* Kanalzeilen und Mitgliedereintraege */
+[class*="sidebarList"] [class*="containerDefault"],
+[class*="sidebarList"] [class*="link_"],
+[class*="membersWrap"] [class*="member_"],
+[class*="membersWrap"] [class*="memberInner"] {
+	border-top: 1px solid #fff !important;
+	border-bottom: 1px solid #808080 !important;
+	box-sizing: border-box !important;
+}
+
+/* Ausgewaehlter Kanal: dunkelblau, weisse Schrift, harte Kante */
+[class*="sidebarList"] [class*="modeSelected"],
+[class*="sidebarList"] [class*="selected_"],
+[class*="sidebarList"] [class*="containerDefault"]:has([class*="modeSelected"]) {
+	background-color: #0a246a !important;
+	border-top: 1px solid #000 !important;
+	border-bottom: 1px solid #000 !important;
+}
+
+[class*="modeSelected"],
+[class*="modeSelected"] * {
+	color: #fff !important;
+}
+
+/* Gruppenueberschriften ("Owner - 2") fett und schwarz */
+[class*="membersGroup"],
+[class*="containerDefault"] [class*="headerText"],
+h2[class*="header_"] {
+	color: #000 !important;
+	font-weight: 700 !important;
+	border-bottom: 1px solid #fff !important;
+}
+
+/* Avatare und Server-Icons eckig -- Win95 kennt keine runden Ecken */
+[class*="avatar"],
+[class*="avatar"] foreignObject,
+[class*="wrapper_"] img,
+nav[class*="guilds_"] [class*="wrapper_"] {
+	border-radius: 0 !important;
+	clip-path: none !important;
+	mask: none !important;
+}
+
+/*
+////////////////////////////////////////////////////////////
+///SERVERLEISTE UND NACHRICHTENDICHTE
+///
+/// Die Win95-Scrollleiste ist 16px breit. In der 57px
+/// schmalen Serverleiste bleiben damit nur 41px fuer die
+/// 44px-Icons -- sie draengen sich. Im Original ist dort
+/// keine Scrollleiste sichtbar.
+////////////////////////////////////////////////////////////
+*/
+
+nav[class*="guilds_"] [class*="scroller"],
+nav[class*="guilds_"] [class*="stack_"] {
+	scrollbar-width: none !important;
+}
+
+nav[class*="guilds_"] [class*="scroller"]::-webkit-scrollbar,
+nav[class*="guilds_"] [class*="stack_"]::-webkit-scrollbar {
+	display: none !important;
+	width: 0 !important;
+}
+
+/* Icons mittig mit etwas Luft, wie im Original */
+nav[class*="guilds_"] [class*="listItem_"] {
+	margin: 2px auto !important;
+}
+
+/* Nachrichten dichter setzen -- 1995 gab es keine Luftpolster */
+[class*="messageListItem"] {
+	margin-top: 0 !important;
+}
+
+[class*="message_"][class*="cozy"],
+[class*="message_"][class*="groupStart"] {
+	padding-top: 2px !important;
+	padding-bottom: 2px !important;
+	margin-top: 4px !important;
+}
+
+/*
+////////////////////////////////////////////////////////////
+///SCHRIFTGROESSEN
+///
+/// Win95 setzte MS Sans Serif in 8pt, also rund 12px. Discord
+/// liefert 16px aus. Bei 16px passt kein Text mehr sauber in
+/// eine 26px hohe Kanalzeile -- die Groessenverhaeltnisse des
+/// Originals kippen damit ueberall.
+///
+/// Wer es groesser mag, dreht hier an einer Stelle:
+////////////////////////////////////////////////////////////
+*/
+
+:root {
+	--w95-schrift: 12px;
+	--w95-zeile: 15px;
+}
+
+[class*="messageContent"],
+[class*="markup_"],
+[class*="sidebarList"] [class*="name_"],
+[class*="membersWrap"] [class*="name_"],
+[class*="channelName"],
+[class*="username_"],
+[class*="timestamp"],
+[class*="headerText"],
+[class*="channelTextArea"] [class*="textArea"],
+[class*="placeholder"] {
+	font-size: var(--w95-schrift) !important;
+	line-height: var(--w95-zeile) !important;
+}
+
+/* Ueberschriften eine Spur groesser, wie in Win95-Dialogen */
+[class*="title_"] [class*="titleWrapper"],
+h1, h2, h3 {
+	font-size: 13px !important;
+}
+
+/* --- Benutzerleiste unten links ---
+   Der Namensbereich kollabiert ohne min-width auf wenige Pixel,
+   sobald die Leiste schmaler wird. flex + Ellipse statt Umbruch. */
+
+[class*="panels_"] [class*="nameTag"],
+[class*="panels_"] [class*="username"],
+[class*="panels_"] [class*="panelTitleContainer"] {
+	min-width: 0 !important;
+	flex: 1 1 auto !important;
+	white-space: nowrap !important;
+	overflow: hidden !important;
+	text-overflow: ellipsis !important;
+	font-size: 12px !important;
+	line-height: 14px !important;
+}
+
+[class*="panels_"] [class*="avatarWrapper"] {
+	flex: 0 0 auto !important;
+}
+
+/* --- Nachrichten: Win95 kannte keine 72px-Einzuege --- */
+
+[class*="message_"][class*="cozyMessage"] {
+	padding-left: 56px !important;
+	padding-right: 12px !important;
+	margin-top: 2px !important;
+}
+
+[class*="cozyMessage"] [class*="avatar_"] {
+	left: 12px !important;
+	width: 32px !important;
+	height: 32px !important;
+}
+
+/* Der Name braucht Vorrang vor den Knoepfen, sonst bleiben ihm
+   in der 249px-Leiste nur ein paar Pixel. */
+[class*="panels_"] [class*="accountPopoutButtonWrapper"] {
+	flex: 1 1 auto !important;
+	min-width: 88px !important;
+}
+
+[class*="panels_"] [class*="container_"] > [class*="buttons"],
+[class*="panels_"] [class*="buttonContainer"] {
+	flex: 0 0 auto !important;
+}
+
+[class*="panels_"] button {
+	padding: 2px !important;
+}
+
+/* Zeilen enger stellen -- im Original stehen Folgenachrichten
+   knapp untereinander, nicht mit Luft dazwischen. */
+[class*="message_"][class*="cozyMessage"] {
+	padding-top: 0 !important;
+	padding-bottom: 0 !important;
+	margin-top: 0 !important;
+}
+
+[class*="messageContent"] {
+	line-height: 15px !important;
+}
+
+[class*="message_"] + [class*="message_"] {
+	margin-top: 0 !important;
+}
