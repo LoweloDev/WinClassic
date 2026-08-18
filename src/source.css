@@ -2300,8 +2300,10 @@ nav[class*="guilds_"] {
 	flex: 0 0 192px !important;
 }
 
-/* Gesamtcontainer = Serverleiste (57) + Kanalliste (192) */
-[class*="sidebar_"]:not([class*="sidebarList"]) {
+/* Gesamtcontainer = Serverleiste (57) + Kanalliste (192).
+   :has(nav) grenzt gegen die Sidebar der Einstellungen ab -- die
+   traegt denselben Klassenpraefix und wuerde sonst mitschrumpfen. */
+[class*="sidebar_"]:has(> nav[class*="guilds_"]) {
 	width: 249px !important;
 	max-width: 249px !important;
 	flex: 0 0 249px !important;
@@ -2522,4 +2524,160 @@ h1, h2, h3 {
 
 [class*="message_"] + [class*="message_"] {
 	margin-top: 0 !important;
+}
+
+/*
+////////////////////////////////////////////////////////////
+///EINSTELLUNGSFENSTER
+///
+/// Eigener Bereich mit eigenen Klassen (navScroller, item,
+/// contentRegion). Im Original ist die Navigation eine
+/// kompakte graue Liste mit Rillen, der aktive Eintrag
+/// dunkelblau -- keine luftigen weissen Kacheln.
+////////////////////////////////////////////////////////////
+*/
+
+[class*="standardSidebarView"],
+[class*="sidebarRegion"],
+[class*="navScroller"],
+[class*="contentRegion"],
+[class*="contentColumn"] {
+	background-color: #C0C0C0 !important;
+}
+
+/* Navigationseintraege: kompakt, mit Win95-Rille */
+[class*="navScroller"] [class*="item_"] {
+	/* min-height statt height: mehrzeilige Eintraege muessen
+	   wachsen duerfen, sonst ueberlappt ihr Text den naechsten. */
+	min-height: 22px !important;
+	padding: 2px 8px !important;
+	margin: 0 !important;
+	font-size: 12px !important;
+	line-height: 18px !important;
+	border-top: 1px solid #fff !important;
+	border-bottom: 1px solid #808080 !important;
+	box-sizing: border-box !important;
+	color: #000 !important;
+}
+
+[class*="navScroller"] [class*="item_"][class*="active"],
+[class*="navScroller"] [class*="item_"][class*="selected"],
+[class*="navScroller"] [class*="item_"][aria-selected="true"] {
+	background-color: #0a246a !important;
+	color: #fff !important;
+	border-top: 1px solid #000 !important;
+	border-bottom: 1px solid #000 !important;
+}
+
+[class*="navScroller"] [class*="item_"][class*="active"] *,
+[class*="navScroller"] [class*="item_"][class*="selected"] *,
+[class*="navScroller"] [class*="item_"][aria-selected="true"] * {
+	color: #fff !important;
+}
+
+/* Trennueberschriften der Navigation */
+[class*="navScroller"] [class*="header_"] {
+	font-size: 11px !important;
+	font-weight: 700 !important;
+	color: #000 !important;
+	padding: 4px 8px 2px !important;
+}
+
+/* Inhaltsbereich: Abschnitte als abgesetzte Kaesten */
+[class*="contentRegion"] [class*="divider"] {
+	border-color: #808080 !important;
+	box-shadow: 0 1px 0 #fff !important;
+}
+
+[class*="contentRegion"] h1,
+[class*="contentRegion"] h2,
+[class*="contentRegion"] h3,
+[class*="contentRegion"] [class*="title_"] {
+	font-size: 13px !important;
+	color: #000 !important;
+}
+
+[class*="contentRegion"] [class*="description"],
+[class*="contentRegion"] [class*="note_"] {
+	font-size: 12px !important;
+	color: #000 !important;
+}
+
+/* Eingabefelder in den Einstellungen */
+[class*="contentRegion"] input,
+[class*="contentRegion"] [class*="inputDefault"] {
+	background-color: #fff !important;
+	box-shadow: var(--w95-eingelassen) !important;
+	border: none !important;
+	font-size: 12px !important;
+}
+
+/* Inhaltsbereich der Einstellungen: Win95-Schriftgroessen */
+[class*="contentRegion"] *,
+[class*="contentColumn"] * {
+	font-size: 12px !important;
+	line-height: 16px !important;
+}
+
+[class*="contentRegion"] h1,
+[class*="contentRegion"] [class*="h1_"] {
+	font-size: 14px !important;
+	font-weight: 700 !important;
+}
+
+/* Kopfbereich der Einstellungs-Sidebar mitfaerben */
+[class*="sidebarRegion"] > div,
+[class*="side_"] {
+	background-color: #C0C0C0 !important;
+}
+
+/*
+////////////////////////////////////////////////////////////
+///TYPOGRAFIE-SKALA
+///
+/// Discord vergibt Schriftgroessen ueber Utility-Klassen:
+///
+///   text-xxs/normal   10px
+///   text-xs/normal    12px
+///   text-sm/normal    14px
+///   text-md/semibold  16px
+///   ...
+///
+/// Damit laesst sich die Typografie der gesamten App an
+/// einer Stelle fassen, statt jeden Bereich einzeln zu
+/// treffen. Win95 arbeitete mit 8pt (rund 11px) als Basis,
+/// Ueberschriften kaum groesser.
+////////////////////////////////////////////////////////////
+*/
+
+[class*="text-xxs/"] { font-size: 10px !important; line-height: 13px !important; }
+[class*="text-xs/"]  { font-size: 11px !important; line-height: 14px !important; }
+[class*="text-sm/"]  { font-size: 11px !important; line-height: 14px !important; }
+[class*="text-md/"]  { font-size: 12px !important; line-height: 15px !important; }
+[class*="text-lg/"]  { font-size: 13px !important; line-height: 16px !important; }
+[class*="text-xl/"]  { font-size: 14px !important; line-height: 17px !important; }
+
+/* Ueberschriften bleiben fett, aber nicht gross */
+[class*="/semibold"],
+[class*="/bold"] { font-weight: 700 !important; }
+
+/* Abstaende im Einstellungsinhalt zusammenziehen.
+   Anker ist die Ebene, die den Navigationsscroller enthaelt --
+   die Utility-Klassen (stack_, container_) kommen sonst auch in
+   der Serverleiste vor und wuerden dort mitschrumpfen. */
+
+[class*="layer_"]:has([class*="navScroller"]) [class*="stack_"] {
+	gap: 2px !important;
+}
+
+[class*="layer_"]:has([class*="navScroller"]) [class*="container_"] {
+	padding-top: 2px !important;
+	padding-bottom: 2px !important;
+}
+
+/* Abschnitte als abgesetzte Kaesten, wie Win95-Gruppenrahmen */
+[class*="layer_"]:has([class*="navScroller"]) [class*="divider"] {
+	border-top: 1px solid #808080 !important;
+	box-shadow: 0 1px 0 #fff !important;
+	margin: 4px 0 !important;
 }
