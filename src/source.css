@@ -3127,3 +3127,102 @@ code, pre, [class*="hljs"], [class*="inlineCode"] {
 	border-bottom: 1px solid #808080 !important;
 	box-shadow: 0 1px 0 #fff !important;
 }
+
+/* Benutzerleiste: Discord legt dort bis zu vier Textzeilen ab
+   (Name, Tag, Status, eigener Status). In 44px passen zwei --
+   das Original zeigt auch nur Name und Tag. Ohne Begrenzung
+   laeuft der Rest unten aus dem Fenster heraus. */
+
+[class*="panels_"] {
+	overflow: hidden !important;
+}
+
+[class*="panels_"] [class*="nameTag"],
+[class*="panels_"] [class*="panelTitleContainer"] {
+	max-height: 26px !important;
+	overflow: hidden !important;
+}
+
+[class*="panels_"] [class*="panelSubtext"],
+[class*="panels_"] [class*="hoverRoll"] {
+	max-height: 13px !important;
+	overflow: hidden !important;
+}
+
+/* Der eigene Statustext ist im Original nicht vorhanden */
+[class*="panels_"] [class*="customStatus"] {
+	display: none !important;
+}
+
+/* Der innere Container der Benutzerleiste hat 12px Polsterung und
+   wird damit 56px hoch -- mehr als die Leiste selbst (44px).
+   Daher der Ueberlauf nach unten. */
+[class*="panels_"] [class*="container_"] {
+	padding: 4px 6px !important;
+	height: 44px !important;
+	max-height: 44px !important;
+	box-sizing: border-box !important;
+	align-items: center !important;
+}
+
+[class*="panels_"] [class*="accountPopoutButtonWrapper"] {
+	padding: 0 !important;
+	margin: 0 !important;
+	max-height: 36px !important;
+}
+
+[class*="panels_"] [class*="panelTitleContainer"] {
+	max-height: 13px !important;
+	margin: 0 !important;
+}
+
+/* Der Textblock bleibt hoeher als die Leiste, weil Discord dort
+   Name, Tag und eigenen Status untereinander stapelt. Auf zwei
+   Zeilen begrenzen -- so zeigt es auch das Original. */
+[class*="panels_"] [class*="accountPopoutButtonWrapper"] > div,
+[class*="panels_"] [class*="nameTag"] {
+	max-height: 24px !important;
+	overflow: hidden !important;
+	display: block !important;
+}
+
+/* Discord setzt in die Benutzerleiste 32px-Knoepfe plus zwei
+   schmale Aufklapp-Knoepfe. Das Original hat drei Knoepfe zu
+   je rund 22px. Verkleinern schafft den Platz, den der Name
+   braucht -- und trifft zugleich die Win95-Proportion. */
+[class*="panels_"] button {
+	height: 22px !important;
+	min-height: 22px !important;
+	padding: 0 2px !important;
+}
+
+[class*="panels_"] button svg {
+	width: 14px !important;
+	height: 14px !important;
+}
+
+/* Name und Tag bekommen zwei Zeilen a 12px, wie im Original */
+[class*="panels_"] [class*="nameTag"] {
+	max-height: 26px !important;
+	min-width: 0 !important;
+	flex: 1 1 auto !important;
+}
+
+[class*="panels_"] [class*="panelSubtextContainer"] {
+	max-height: 13px !important;
+	overflow: hidden !important;
+}
+
+/* Knopfbreiten mit -- die Hoehe allein reicht nicht, Discord
+   setzt eine eigene Mindestbreite. */
+[class*="panels_"] button {
+	width: 22px !important;
+	min-width: 0 !important;
+	flex: 0 0 auto !important;
+}
+
+/* Die schmalen Aufklapp-Knoepfe duerfen noch schmaler sein */
+[class*="panels_"] button[aria-label*="ptionen"],
+[class*="panels_"] button[aria-label*="ptions"] {
+	width: 12px !important;
+}
