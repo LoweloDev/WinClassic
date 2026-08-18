@@ -2326,11 +2326,9 @@ nav[class*="guilds_"] {
 /* Server-Icons: im Original 39px hoch mit 7px Abstand.
    (Eine fruehere Messung von 28px hatte den Bildinhalt erfasst,
    nicht den Kasten.) */
-nav[class*="guilds_"] [class*="listItem_"],
-nav[class*="guilds_"] [class*="wrapper_"],
-nav[class*="guilds_"] [class*="wrapper_"] img,
-nav[class*="guilds_"] [class*="wrapper_"] svg,
-nav[class*="guilds_"] foreignObject {
+nav[class*="guilds_"] [class*="listItem_"] > [class*="wrapper_"],
+nav[class*="guilds_"] [class*="listItem_"] > [class*="wrapper_"] > img,
+nav[class*="guilds_"] [class*="listItem_"] > [class*="wrapper_"] > svg {
 	width: 39px !important;
 	height: 39px !important;
 }
@@ -3237,10 +3235,10 @@ nav[class*="guilds_"] > div {
 	background-color: #0a246a !important;
 }
 
-/* Icons als helle Kaesten auf dem dunklen Grund, wie im Original */
-nav[class*="guilds_"] [class*="listItem_"] [class*="wrapper_"] {
-	box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #fff !important;
-}
+/* Kein zusaetzlicher Rahmen um die Server-Icons: In der
+   Serverleiste sind mehrere wrapper_ ineinander verschachtelt,
+   eine allgemeine Regel setzt den Rahmen mehrfach und zerlegt
+   die Leiste. Im Original tragen die Icons ohnehin keinen. */
 
 
 /*
@@ -3338,4 +3336,25 @@ nav[class*="guilds_"] [class*="folder_"] [class*="wrapper_"] {
 
 [class*="membersWrap"] [class*="members_"] {
 	max-height: none !important;
+}
+
+/* Discord baut die Server-Eintraege 72px breit und zieht sie mit
+   einem negativen rechten Rand zurecht. In der 57px schmalen
+   Leiste des Originals ragen sie damit heraus, sitzen links
+   statt mittig, und die Zaehler-Badges stehen ueber dem Rand. */
+nav[class*="guilds_"] [class*="listItem_"] {
+	width: 57px !important;
+	max-width: 57px !important;
+	margin: 3px 0 !important;
+	display: flex !important;
+	justify-content: center !important;
+	align-items: center !important;
+	box-sizing: border-box !important;
+}
+
+/* Der Icon-Wrapper ist absolut mit left:0 positioniert -- eine
+   Zentrierung ueber den Elternteil greift daran vorbei.
+   (57 - 39) / 2 = 9px Versatz. */
+nav[class*="guilds_"] [class*="listItem_"] > [class*="wrapper_"] {
+	left: 9px !important;
 }
