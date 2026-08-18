@@ -2888,7 +2888,7 @@ code, pre, [class*="hljs"], [class*="inlineCode"] {
 [class*="searchBar"] {
 	height: 21px !important;
 	min-height: 21px !important;
-	max-width: 180px !important;
+	width: 100% !important;
 	padding: 0 4px !important;
 	box-sizing: border-box !important;
 }
@@ -3357,4 +3357,18 @@ nav[class*="guilds_"] [class*="listItem_"] {
    (57 - 39) / 2 = 9px Versatz. */
 nav[class*="guilds_"] [class*="listItem_"] > [class*="wrapper_"] {
 	left: 9px !important;
+}
+
+/* Die Mitgliederliste blieb auf Inhaltshoehe stehen (346px) statt
+   bis zum unteren Rand zu laufen. Ein gesetztes height hebelt
+   align-self: stretch aus -- die Hoehe muss auto bleiben, damit
+   Flex sie auf die Containerhoehe streckt. */
+[class*="membersWrap"] {
+	min-height: 100% !important;
+	align-self: stretch !important;
+}
+
+[class*="membersWrap"] [class*="members_"] {
+	min-height: 100% !important;
+	flex: 1 1 auto !important;
 }
