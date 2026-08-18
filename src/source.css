@@ -3626,3 +3626,117 @@ input[type="radio"] {
 [class*="vc-"] button:not([role="switch"]):active {
 	box-shadow: var(--w95-eingelassen) !important;
 }
+
+
+/*
+////////////////////////////////////////////////////////////
+///AUSWAHL: BLAUER GRUND HEISST WEISSE SCHRIFT
+///
+/// In Windows 95 gilt ausnahmslos: was blau hinterlegt ist,
+/// traegt weisse Schrift. Discord faerbt nur den Hintergrund und
+/// laesst die Schrift dunkel -- auf #0a246a unlesbar.
+///
+/// Wichtig: Textfarbe und Hintergrund IMMER im selben Regelsatz
+/// setzen. Eine allgemeine Regel wie [class*="selected"] * trifft
+/// auch Zeilen, die gar nicht blau hinterlegt sind -- dort steht
+/// dann weisse Schrift auf grauem Grund, genauso unlesbar.
+////////////////////////////////////////////////////////////
+*/
+
+/* Markierter Text */
+::selection {
+	background-color: #0a246a !important;
+	color: #fff !important;
+}
+
+::-moz-selection {
+	background-color: #0a246a !important;
+	color: #fff !important;
+}
+
+/* Kanalliste: ausgewaehlter Kanal */
+[class*="sidebarList"] [class*="modeSelected"],
+[class*="sidebarList"] [class*="modeSelected"] * {
+	background-color: #0a246a !important;
+	color: #fff !important;
+}
+
+/* Kanalliste: ueberfahrener Kanal */
+[class*="sidebarList"] [class*="containerDefault"]:hover,
+[class*="sidebarList"] [class*="containerDefault"]:hover * {
+	background-color: #0a246a !important;
+	color: #fff !important;
+}
+
+/* Einstellungen: aktiver Navigationseintrag */
+[class*="navScroller"] [class*="item_"][class*="active"],
+[class*="navScroller"] [class*="item_"][class*="active"] *,
+[class*="navScroller"] [class*="item_"]:hover,
+[class*="navScroller"] [class*="item_"]:hover * {
+	background-color: #0a246a !important;
+	color: #fff !important;
+}
+
+/* Kontextmenue: ueberfahrener Eintrag */
+[class*="menu_"] [role="menuitem"]:hover,
+[class*="menu_"] [role="menuitem"]:hover *,
+[class*="menu_"] [role="menuitem"][class*="focused"],
+[class*="menu_"] [role="menuitem"][class*="focused"] * {
+	background-color: #0a246a !important;
+	color: #fff !important;
+}
+
+/* Schnellsuche: ausgewaehlte Ergebniszeile */
+[class*="quickswitcher"] [class*="selected"],
+[class*="quickswitcher"] [class*="selected"] *,
+[id*="quickswitcher"] [aria-selected="true"],
+[id*="quickswitcher"] [aria-selected="true"] * {
+	background-color: #0a246a !important;
+	color: #fff !important;
+}
+
+/* Mitgliederliste: ueberfahrener Eintrag */
+[class*="membersWrap"] [class*="member_"]:hover,
+[class*="membersWrap"] [class*="member_"]:hover * {
+	background-color: #0a246a !important;
+	color: #fff !important;
+}
+
+/* Eingabefelder behalten schwarze Schrift, auch in einer
+   ausgewaehlten Zeile */
+[class*="modeSelected"] input,
+[class*="selected"] input,
+[class*="active"] input {
+	color: #000 !important;
+	background-color: #fff !important;
+}
+
+/*
+////////////////////////////////////////////////////////////
+///DATEI-ABLAGEBEREICH
+///
+/// Erscheint nur, waehrend eine Datei ueber das Fenster gezogen
+/// wird. Discord legt dort einen dunklen Schleier mit weisser
+/// Schrift. Die allgemeine Regel fuer [class*="title_"] faerbte
+/// seine Ueberschrift grau -- weisse Schrift auf grauem Grund.
+////////////////////////////////////////////////////////////
+*/
+
+[class*="uploadArea"],
+[class*="uploadDropModal"] {
+	background-color: rgba(0, 0, 0, .55) !important;
+}
+
+[class*="uploadDropModal"] [class*="inner_"] {
+	background-color: #C0C0C0 !important;
+	box-shadow: var(--w95-erhaben) !important;
+	padding: 12px 16px !important;
+}
+
+[class*="uploadDropModal"] [class*="title_"],
+[class*="uploadDropModal"] [class*="title_"] *,
+[class*="uploadDropModal"] [class*="description"] {
+	background-color: transparent !important;
+	color: #000 !important;
+	font-size: 12px !important;
+}
