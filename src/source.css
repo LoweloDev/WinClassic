@@ -3740,3 +3740,18 @@ input[type="radio"] {
 	color: #000 !important;
 	font-size: 12px !important;
 }
+
+/* Platzhaltertexte in Eingabefeldern: Discord setzt sie teilweise
+   auf fast-weiss (251,251,251), was auf weissem Feld unsichtbar
+   ist. Win95 nutzte dafuer ein gedaempftes Grau. */
+::placeholder,
+[class*="placeholder"],
+[class*="overflow_"]:not([class*="scroller"]) {
+	color: #767676 !important;
+	opacity: 1 !important;
+}
+
+[class*="searchBar"] [class*="placeholder"],
+[class*="channelTextArea"] [class*="placeholder"] {
+	color: #767676 !important;
+}
