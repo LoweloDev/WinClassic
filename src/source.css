@@ -3077,3 +3077,53 @@ code, pre, [class*="hljs"], [class*="inlineCode"] {
 	margin: 0 !important;
 	border-radius: 0 !important;
 }
+
+/* Profilkopf und Suchfeld der Einstellungen: im Original gibt es
+   sie nicht, dort beginnt die Liste direkt. Zumindest in die
+   graue Flaeche einfuegen statt weiss abzusetzen. */
+[class*="layer_"]:has([class*="navScroller"]) [class*="profileHeader"],
+[class*="sidebar__409aa"] > div:first-child,
+[class*="sidebar__409aa"] [class*="searchBar"] {
+	background-color: #C0C0C0 !important;
+}
+
+[class*="sidebar__409aa"] [class*="searchBar"] {
+	height: 20px !important;
+	min-height: 20px !important;
+	margin: 2px 6px !important;
+	max-width: none !important;
+	background-color: #fff !important;
+}
+
+/* Karten im Inhaltsbereich kompakter -- im Original tragen sie
+   mehr Inhalt auf weniger Hoehe. */
+[class*="layer_"]:has([class*="navScroller"]) [class*="container__75920"] {
+	padding: 3px 6px !important;
+	margin: 2px 0 !important;
+}
+
+[class*="layer_"]:has([class*="navScroller"]) [class*="stack_"] {
+	gap: 1px !important;
+}
+
+/* Die Sidebar der Einstellungen traegt denselben Klassenpraefix
+   wie die Hauptseitenleiste. Ueber den Layer-Anker faerben wir
+   nur die in den Einstellungen. */
+[class*="layer_"]:has([class*="navScroller"]) [class*="sidebar_"],
+[class*="layer_"]:has([class*="navScroller"]) [class*="nav__"],
+[class*="layer_"]:has([class*="navScroller"]) [class*="section__"],
+[class*="layer_"]:has([class*="navScroller"]) [class*="sectionList"] {
+	background-color: #C0C0C0 !important;
+}
+
+/* Profilkopf: Discords Neuerung, im Original nicht vorhanden.
+   Zumindest in die graue Flaeche einfuegen und flacher machen. */
+[class*="profileCustomizationTab"] {
+	background-color: transparent !important;
+}
+
+[class*="itemContainer_"]:has([class*="profileCustomizationTab"]) {
+	background-color: #C0C0C0 !important;
+	border-bottom: 1px solid #808080 !important;
+	box-shadow: 0 1px 0 #fff !important;
+}
