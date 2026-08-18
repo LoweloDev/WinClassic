@@ -2323,11 +2323,14 @@ nav[class*="guilds_"] {
 	padding: 0 !important;
 }
 
-/* Server-Icons an die schmalere Leiste anpassen */
+/* Server-Icons: im Original 32px in der 57px-Leiste, nicht 44px */
 nav[class*="guilds_"] [class*="listItem_"],
-nav[class*="guilds_"] [class*="wrapper_"] {
-	width: 44px !important;
-	height: 44px !important;
+nav[class*="guilds_"] [class*="wrapper_"],
+nav[class*="guilds_"] [class*="wrapper_"] img,
+nav[class*="guilds_"] [class*="wrapper_"] svg,
+nav[class*="guilds_"] foreignObject {
+	width: 32px !important;
+	height: 32px !important;
 }
 
 /*
@@ -2817,4 +2820,157 @@ body, button, input, textarea, select,
 code, pre, [class*="hljs"], [class*="inlineCode"] {
 	font-family: "MorePerfectDOSVGA", "Px437 IBM VGA8", Consolas,
 	             "Courier New", monospace !important;
+}
+
+/*
+////////////////////////////////////////////////////////////
+///FEINMASSE DER KANALLISTE
+///
+/// Am Original nachgemessen:
+///   Serverkopf        40px hoch (Trennlinie bei y=40)
+///   Kanalzeile        26px hoch
+///   Kanal-Icon (#)    14x9px sichtbar -> 16px Icon
+///
+/// Discord liefert 48px Kopf und 20px Icons.
+////////////////////////////////////////////////////////////
+*/
+
+[class*="sidebar_"] [class*="header_"],
+[class*="guildHeader"] {
+	height: 40px !important;
+	min-height: 40px !important;
+	padding: 0 8px !important;
+	box-sizing: border-box !important;
+	border-bottom: 1px solid #808080 !important;
+	box-shadow: 0 1px 0 #fff !important;
+}
+
+[class*="sidebarList"] [class*="containerDefault"] svg,
+[class*="sidebarList"] [class*="link_"] svg,
+[class*="sidebarList"] [class*="icon_"] {
+	width: 16px !important;
+	height: 16px !important;
+	flex: 0 0 16px !important;
+}
+
+/* Kategorieueberschriften ("info", "plugins") kompakt */
+[class*="sidebarList"] [class*="containerDefault"][class*="category"],
+[class*="sidebarList"] h3,
+[class*="sidebarList"] [class*="categoryHeader"] {
+	height: 20px !important;
+	min-height: 20px !important;
+	font-size: 11px !important;
+	font-weight: 700 !important;
+	padding: 0 8px !important;
+}
+
+/*
+////////////////////////////////////////////////////////////
+///FEINMASSE KOPFLEISTE UND MITGLIEDERLISTE
+///
+/// Am Original nachgemessen (Referenz -> Discord heute):
+///   Kopfleiste        38px  <- 32px
+///   Suchfeld          21px  <- 32px
+///   Mitgliederzeile   32px  <- 45px
+///   Avatar            24px  <- 32px
+///   Gruppentitel      18px  <- 40px
+///   Kopfleisten-Icon  16px  <- 20px
+////////////////////////////////////////////////////////////
+*/
+
+[class*="title_"]:not([class*="titleWrapper"]) {
+	height: 38px !important;
+	min-height: 38px !important;
+	box-sizing: border-box !important;
+}
+
+[class*="searchBar"] {
+	height: 21px !important;
+	min-height: 21px !important;
+	max-width: 180px !important;
+	padding: 0 4px !important;
+	box-sizing: border-box !important;
+}
+
+[class*="searchBar"] input,
+[class*="searchBar"] [class*="input"] {
+	height: 19px !important;
+	font-size: 11px !important;
+	padding: 0 2px !important;
+}
+
+[class*="toolbar_"] svg,
+[class*="title_"] > div > svg {
+	width: 16px !important;
+	height: 16px !important;
+}
+
+[class*="membersWrap"] [class*="member_"],
+[class*="membersWrap"] [class*="memberInner"] {
+	height: 32px !important;
+	min-height: 32px !important;
+	padding: 0 6px !important;
+	box-sizing: border-box !important;
+}
+
+[class*="membersWrap"] [class*="avatar"],
+[class*="membersWrap"] [class*="avatar"] img,
+[class*="membersWrap"] [class*="wrapper_"] > img {
+	width: 24px !important;
+	height: 24px !important;
+}
+
+[class*="membersGroup"] {
+	height: 18px !important;
+	min-height: 18px !important;
+	padding: 0 6px !important;
+	font-size: 11px !important;
+	line-height: 17px !important;
+	box-sizing: border-box !important;
+}
+
+/* Am Original nachgemessen:
+     Eingabezeile    46px  <- 71px
+     Benutzerleiste  44px  <- 57px */
+
+[class*="channelTextArea"] {
+	min-height: 46px !important;
+	max-height: 46px !important;
+	box-sizing: border-box !important;
+}
+
+[class*="channelTextArea"] [class*="scrollableContainer"],
+[class*="channelTextArea"] [class*="inner_"] {
+	min-height: 44px !important;
+}
+
+[class*="channelTextArea"] [class*="textArea"],
+[class*="channelTextArea"] [class*="slateContainer"] {
+	padding-top: 0 !important;
+	padding-bottom: 0 !important;
+}
+
+[class*="panels_"] {
+	height: 44px !important;
+	min-height: 44px !important;
+	box-sizing: border-box !important;
+}
+
+[class*="panels_"] [class*="avatarWrapper"] img,
+[class*="panels_"] [class*="avatar"] {
+	width: 24px !important;
+	height: 24px !important;
+}
+
+/* Benutzerleiste: zwei Zeilen (Name und Status) muessen in 44px
+   passen, ohne sich zu ueberlagern. */
+[class*="panels_"] [class*="nameTag"],
+[class*="panels_"] [class*="panelTitleContainer"] {
+	line-height: 12px !important;
+	font-size: 11px !important;
+}
+
+[class*="panels_"] [class*="panelSubtext"] {
+	line-height: 11px !important;
+	font-size: 10px !important;
 }
