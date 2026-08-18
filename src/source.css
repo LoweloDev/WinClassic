@@ -2742,3 +2742,52 @@ h1, h2, h3 {
 	background-image: none !important;
 	mask-image: none !important;
 }
+
+/*
+////////////////////////////////////////////////////////////
+///BEREICHSRAHMEN
+///
+/// Der auffaelligste Unterschied zum Original: Dort ist jeder
+/// Bereich ein eingelassener Kasten mit 3D-Kante -- Kanalliste,
+/// Nachrichtenbereich, Mitgliederliste, Eingabezeile. Heute
+/// stossen die Flaechen randlos aneinander.
+///
+/// Eingelassen heisst in Win95: oben/links dunkel, unten/rechts
+/// hell -- die Flaeche liegt scheinbar tiefer als der Rahmen.
+////////////////////////////////////////////////////////////
+*/
+
+[class*="sidebarList"],
+[class*="membersWrap"],
+[class*="chatContent"] [class*="scrollerInner"],
+[class*="messagesWrapper"] {
+	box-shadow: var(--w95-eingelassen) !important;
+	box-sizing: border-box !important;
+}
+
+/* Die Eingabezeile ist im Original der deutlichste Kasten */
+[class*="channelTextArea"] {
+	margin: 4px 8px 8px !important;
+	box-shadow: var(--w95-eingelassen) !important;
+}
+
+/* Trennkanten zwischen den Spalten */
+nav[class*="guilds_"] {
+	box-shadow: inset -1px 0 #808080, inset -2px 0 #dfdfdf !important;
+}
+
+/* Kopfleiste als erhabene Leiste absetzen */
+[class*="title_"]:not([class*="titleWrapper"]),
+[class*="toolbar_"] {
+	box-shadow: inset 0 1px #fff, inset 0 -1px #808080 !important;
+}
+
+/* Discord spielt Profileffekte als Video ab -- CSS-Regeln gegen
+   Verlaeufe greifen daran vorbei. In der Mitgliederliste
+   ueberlagern sie den Namen. */
+[class*="member_"] video,
+[class*="videoContainer"],
+[class*="memberInner"] video,
+[class*="membersWrap"] canvas {
+	display: none !important;
+}
